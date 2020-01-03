@@ -1,6 +1,7 @@
 import {
-  setSquare, squareCanBeSet, xIsNext, getWinner,
+  setSquare, squareCanBeSet, xIsNext, getWinner, allSquaresSet,
 } from './index';
+
 
 describe('#setSquare', () => {
   let board;
@@ -11,28 +12,29 @@ describe('#setSquare', () => {
 
   describe('SUCCESSFUL', () => {
     it('should return new board after setting square at index 0', () => {
-      const newBoard = setSquare(board, 'X', 0);
+      const newBoard = setSquare(board, 0, 'X');
       expect(newBoard).toEqual(['X', null, null, null, null, null, null, null, null]);
     });
 
     it('should return new board after setting square at index 8', () => {
-      const newBoard = setSquare(board, 'X', 8);
+      const newBoard = setSquare(board, 8, 'X');
       expect(newBoard).toEqual([null, null, null, null, null, null, null, null, 'X']);
     });
   });
 
   describe('FAILURE', () => {
     it('should not set X when O is used', () => {
-      const newBoard = setSquare(board, 'O', 0);
+      const newBoard = setSquare(board, 0, 'O');
       expect(newBoard).not.toEqual(['X', null, null, null, null, null, null, null, null]);
     });
 
     it('should not be equal to previous board', () => {
-      const newBoard = setSquare(board, 'X', 0);
+      const newBoard = setSquare(board, 0, 'X');
       expect(newBoard).not.toEqual(board);
     });
   });
 });
+
 
 describe('#squareCanBeSet', () => {
   it('should return true', () => {
@@ -166,5 +168,23 @@ describe('#getWinner', () => {
       ];
       expect(getWinner(board)).toEqual('O');
     });
+  });
+});
+
+
+describe('#allSquaresSet', () => {
+  it('should return true because board contains 9 strings', () => {
+    const board = Array(9).fill('X');
+    expect(allSquaresSet(board)).toEqual(true);
+  });
+
+  it('should return false because board contains 9 nulls', () => {
+    const board = Array(9).fill(null);
+    expect(allSquaresSet(board)).toEqual(false);
+  });
+
+  it('should return false because board contains 8 strings and 1 null', () => {
+    const board = [...Array(8).fill('X'), null];
+    expect(allSquaresSet(board)).toEqual(false);
   });
 });

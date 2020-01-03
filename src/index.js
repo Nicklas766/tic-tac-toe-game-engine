@@ -1,18 +1,17 @@
+const isEven = (num) => num % 2 === 0;
+const numOfMoves = (board) => board.reduce((acc, curr) => (curr ? acc + 1 : acc), 0);
+
+export const xIsNext = (board) => isEven(numOfMoves(board));
 
 export const squareCanBeSet = (board, index) => board[index] === null;
 
-export const setSquare = (board, playerSymbol, index) => [
+export const allSquaresSet = (board) => (numOfMoves(board) === 9);
+
+export const setSquare = (board, index, playerSymbol) => [
   ...board.slice(0, index),
   playerSymbol,
   ...board.slice(index + 1, board.length),
 ];
-
-
-const isEven = (num) => num % 2 === 0;
-const numOfMoves = (board) => board.reduce((acc, curr) => (curr ? acc + 1 : acc));
-
-export const xIsNext = (board) => isEven(numOfMoves(board));
-
 
 export const getWinner = (board) => {
   const winnerOfSet = (a, b, c) => (board[a] === board[b] && board[a] === board[c]) && board[a];

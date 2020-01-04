@@ -5,9 +5,9 @@ export const xIsNext = (board) => isEven(numOfMoves(board));
 
 export const allSquaresSet = (board) => (numOfMoves(board) === 9);
 
-export const setSquare = (board, index, playerSymbol) => [
+export const setSquare = (board, index) => [
   ...board.slice(0, index),
-  playerSymbol,
+  xIsNext(board) ? 'X' : 'O',
   ...board.slice(index + 1, board.length),
 ];
 

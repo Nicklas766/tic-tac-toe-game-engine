@@ -13,15 +13,13 @@ It's up to you to maintain state of the board, the starting state should be `Arr
 Returns true if its X (player 1) turn, else false.
 
 #### `squareCanBeSet(board: array, index: integer)`
-Returns true if square can be set, else its already set so return false.
+Returns true if square can be set, else its already set (or win has occured) so return false.
 
 #### `allSquaresSet(board: array)`
 Returns true if all squares has been set, else false.
 
-#### `setSquare(board: array, index: integer, playerSymbol: string)`
-Returns a new array of the state of the board after setting a symbol (like, 'X' or 'O') at the given index.
-
-Note: since you get to use your own symbol you also need to ensure you give the correct one each time.
+#### `setSquare(board: array, index: integer)`
+Returns a new array of the state of the board after setting a symbol ('X' or 'O') at the given index.
 
 #### `getWinner(board: array)`
 Returns the string symbol of the winner or `null` if no winner exists.

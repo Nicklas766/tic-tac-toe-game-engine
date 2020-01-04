@@ -12,24 +12,31 @@ describe('#setSquare', () => {
 
   describe('SUCCESSFUL', () => {
     it('should return new board after setting square at index 0', () => {
-      const newBoard = setSquare(board, 0, 'X');
+      const newBoard = setSquare(board, 0);
       expect(newBoard).toEqual(['X', null, null, null, null, null, null, null, null]);
     });
 
     it('should return new board after setting square at index 8', () => {
-      const newBoard = setSquare(board, 8, 'X');
+      const newBoard = setSquare(board, 8);
       expect(newBoard).toEqual([null, null, null, null, null, null, null, null, 'X']);
+    });
+
+    it('should return correct board after setting square two times', () => {
+      const newBoard = setSquare(board, 1);
+      const newestBoard = setSquare(newBoard, 2);
+      expect(newestBoard).toEqual([null, 'X', 'O', null, null, null, null, null, null]);
+    });
+
+    it('should return correct board after setting square four times', () => {
+      const newBoard = setSquare(setSquare(board, 1), 2);
+      const newestBoard = setSquare(setSquare(newBoard, 5), 6);
+      expect(newestBoard).toEqual([null, 'X', 'O', null, null, 'X', 'O', null, null]);
     });
   });
 
   describe('FAILURE', () => {
-    it('should not set X when O is used', () => {
-      const newBoard = setSquare(board, 0, 'O');
-      expect(newBoard).not.toEqual(['X', null, null, null, null, null, null, null, null]);
-    });
-
     it('should not be equal to previous board', () => {
-      const newBoard = setSquare(board, 0, 'X');
+      const newBoard = setSquare(board, 0);
       expect(newBoard).not.toEqual(board);
     });
   });

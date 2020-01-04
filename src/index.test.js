@@ -37,12 +37,21 @@ describe('#setSquare', () => {
 
 
 describe('#squareCanBeSet', () => {
-  it('should return true', () => {
+  it('should return true because empty board', () => {
     const board = Array(9).fill(null);
     expect(squareCanBeSet(board, 0)).toEqual(true);
   });
 
-  it('should return false', () => {
+  it('should return false because X won', () => {
+    const board = [
+      'X', 'X', 'X',
+      'O', 'O', null,
+      null, null, null,
+    ];
+    expect(squareCanBeSet(board, 8)).toEqual(false);
+  });
+
+  it('should return false because it is already set', () => {
     const board = [null, null, null, 'X', null, null, null, null, null];
     expect(squareCanBeSet(board, 3)).toEqual(false);
   });

@@ -3,8 +3,6 @@ const numOfMoves = (board) => board.reduce((acc, curr) => (curr ? acc + 1 : acc)
 
 export const xIsNext = (board) => isEven(numOfMoves(board));
 
-export const squareCanBeSet = (board, index) => board[index] === null;
-
 export const allSquaresSet = (board) => (numOfMoves(board) === 9);
 
 export const setSquare = (board, index, playerSymbol) => [
@@ -26,3 +24,5 @@ export const getWinner = (board) => {
       || winnerOfSet(2, 4, 6)
       || null;
 };
+
+export const squareCanBeSet = (board, index) => board[index] === null && getWinner(board) === null;

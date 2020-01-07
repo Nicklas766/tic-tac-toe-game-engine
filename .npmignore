@@ -1,3 +1,7 @@
 src
 node_modules
 coverage
+.babelrc
+.codeclimate.yml
+.travis.yml
+.eslintrc.json

@@ -3,11 +3,11 @@
 [![Build Status](https://travis-ci.org/Nicklas766/tic-tac-toe-game-engine.svg?branch=master)](https://travis-ci.org/Nicklas766/tic-tac-toe-game-engine)
 
 Stateless tic tac toe engine that provides a set of pure functions. You give 
-the current board and additional arguments (if neccessary) and get back something.
+the current board and additional arguments (if necessary) and get something back.
 
 ## Documentation
 
-It's up to you to maintain state of the board, the starting state should be `Array(9).fill(null)`.
+It's up to you to maintain the state of the board, the starting state should be `Array(9).fill(null)`.
 
 #### `xIsNext(board: array)`
 Returns true if its X (player 1) turn, else false.

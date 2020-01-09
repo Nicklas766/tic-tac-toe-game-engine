@@ -8,7 +8,7 @@ export const allSquaresSet = (board) => (numOfMoves(board) === 9);
 export const setSquare = (board, index) => [
   ...board.slice(0, index),
   xIsNext(board) ? 'X' : 'O',
-  ...board.slice(index + 1, board.length),
+  ...board.slice(index + 1, board.length)
 ];
 
 export const getWinner = (board) => {
